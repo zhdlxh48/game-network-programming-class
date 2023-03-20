@@ -1,46 +1,25 @@
-using System;
-using System.Net;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 
 namespace Week2_Project
 {
     class Week2_201813086_1
     {
-        static void Main(string[] args)
+        public static void Run()
         {
-            IPAddress ipAddrLocal = IPAddress.Parse("192.168.30.236");
-            IPAddress ipAddrLoopback = IPAddress.Loopback;
-            IPAddress ipAddrBroadcast = IPAddress.Broadcast;
-            IPAddress ipAddrAny = IPAddress.Any;
-            IPAddress ipAddrNone = IPAddress.None;
+            Socket socket; // Socket은 null을 허용하지 않으므로 '= null'은 제거함
 
-            IPHostEntry ihe = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddrMySelf = ihe.AddressList[0];
+            try
+            {
+                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                Console.WriteLine("소켓 생성 성공");
 
-            if (IPAddress.IsLoopback(ipAddrLoopback))
-            {
-                Console.WriteLine("The Loopback address is: {0}", ipAddrLoopback.ToString());
+                socket.Close();
             }
-            else
+            catch (SocketException ex) // Socket을 동적 생성하는 과정에서 발생하는 Exception은 SocketException뿐이므로 명시하여 적음
             {
-                Console.WriteLine("Error obtaining the loopback address");
+                Console.WriteLine(ex.Message);
+                Environment.Exit(1);
             }
-            
-            Console.WriteLine("The Local IP address is: {0}\n", myself.ToString());
-            
-            if (ipAddrMySelf == ipAddrLoopback)
-            {
-                Console.WriteLine("The loopback address is the same as local address.\n");
-            }
-            else
-            {
-                Console.WriteLine("The loopback address is not the local address.\n");
-            }
-            
-            Console.WriteLine("The test address is: {0}", ipAddrLocal.ToString());
-            Console.WriteLine("Broadcast address: {0}", ipAddrBroadcast.ToString());
-            Console.WriteLine("The ANY address is: {0}", ipAddrAny.ToString());
-            Console.WriteLine("The NONE address is: {0}", ipAddrNone.ToString());
         }
     }
 }
