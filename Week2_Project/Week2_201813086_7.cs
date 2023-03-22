@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Week2_Project
 {
+    // UDP 서버
     public static class Week2_201813086_7
     {
         public static void Run()
