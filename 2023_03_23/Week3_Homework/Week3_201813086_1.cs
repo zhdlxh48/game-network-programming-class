@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 
 namespace Homework
 {
@@ -10,20 +7,20 @@ namespace Homework
     {
         public static void Run()
         {
-            var test1 = IPAddress.Parse("192.168.1.1");
-            IPEndPoint ie = new IPEndPoint(test1, 8000);
+            var localIp = IPAddress.Parse("192.168.1.81");
+            var ipEP = new IPEndPoint(localIp, 8080);
             
-            Console.WriteLine("The IPEndPoint is: {0}", ie.ToString());
-            Console.WriteLine("The AddressFamily is: {0}", ie.AddressFamily);
-            Console.WriteLine("The address is: {0}, and the port is: {1}\n", ie.Address, ie.Port);
-            Console.WriteLine("The min port number is: {0}", IPEndPoint.MinPort);
-            Console.WriteLine("The max port number is: {0}\n", IPEndPoint.MaxPort);
+            Console.WriteLine("The IPEndPoint is: " + ipEP.ToString());
+            Console.WriteLine("The AddressFamily is: " + ipEP.AddressFamily);
+            Console.WriteLine("The address is: {0}, and the port is: {1}\n", ipEP.Address, ipEP.Port);
+            Console.WriteLine("The min port number is: " + IPEndPoint.MinPort);
+            Console.WriteLine("The max port number is: " + IPEndPoint.MaxPort); // PORT에 할당되는 최대 수는 2^16
             
-            ie.Port = 80;
+            ipEP.Port = 80;
             
-            Console.WriteLine("The changed IPEndPoint value is: {0}", ie.ToString());
-            SocketAddress sa = ie.Serialize();
-            Console.WriteLine("The SocketAddress is: {0}", sa.ToString());
+            Console.WriteLine("\nThe changed IPEndPoint value is: " + ipEP.ToString());
+            SocketAddress sa = ipEP.Serialize();
+            Console.WriteLine("\nThe SocketAddress is: " + sa.ToString());
         }
     }
 }

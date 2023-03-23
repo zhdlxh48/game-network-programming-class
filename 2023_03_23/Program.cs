@@ -1,4 +1,5 @@
-﻿using Practice;
+﻿using Homework;
+using Practice;
 
 namespace _2023_03_23
 {
@@ -6,8 +7,9 @@ namespace _2023_03_23
     {
         static void Main(string[] args)
         {
-            TcpServerPractice.Run();
+            //TcpServerPractice.Run();
             //TcpClientPractice.Run();
+            Week3_201813086_1.Run();
         }
     }
 }
