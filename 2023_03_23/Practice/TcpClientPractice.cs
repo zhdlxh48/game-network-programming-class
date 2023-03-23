@@ -24,7 +24,7 @@ namespace Practice
                         int receivedBytes = 0;
                         int totalReceivedBytes = 0;
 
-                        Console.WriteLine("Enter message");
+                        Console.Write("Enter message: ");
                         var str = Console.ReadLine();
 
                         var encoding = Encoding.Default;
