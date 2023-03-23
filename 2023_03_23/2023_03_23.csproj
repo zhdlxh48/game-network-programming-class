@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Practice\Practice_1.cs" />
+    <Compile Include="Practice\TcpClientPractice.cs" />
+    <Compile Include="Practice\TcpServerPractice.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Week3_Homework\Week3_201813086_1.cs" />

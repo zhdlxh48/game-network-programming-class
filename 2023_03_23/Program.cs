@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Practice;
 
 namespace _2023_03_23
 {
@@ -10,6 +6,8 @@ namespace _2023_03_23
     {
         static void Main(string[] args)
         {
+            TcpServerPractice.Run();
+            //TcpClientPractice.Run();
         }
     }
 }
