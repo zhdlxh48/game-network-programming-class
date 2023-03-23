@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{00FEE7D3-00C3-44A7-93CB-DBCBDF9E7D03}</ProjectGuid>
+    <ProjectGuid>{1A85BFD9-003B-4890-AE5E-F38EE04B4525}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_2023_03_16</RootNamespace>
-    <AssemblyName>2023_03_16</AssemblyName>
+    <RootNamespace>_2023_03_23</RootNamespace>
+    <AssemblyName>2023_03_23</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,17 +46,11 @@
     <Compile Include="Practice\Practice_1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Week2_Homework\Week2_201813086_1.cs" />
-    <Compile Include="Week2_Homework\Week2_201813086_2.cs" />
-    <Compile Include="Week2_Homework\Week2_201813086_3.cs" />
-    <Compile Include="Week2_Homework\Week2_201813086_4.cs" />
-    <Compile Include="Week2_Homework\Week2_201813086_5.cs" />
-    <Compile Include="Week2_Homework\Week2_201813086_6.cs" />
-    <Compile Include="Week2_Homework\Week2_201813086_7.cs" />
-    <Compile Include="Week2_Homework\Week2_201813086_8.cs" />
+    <Compile Include="Week3_Homework\Week3_201813086_1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

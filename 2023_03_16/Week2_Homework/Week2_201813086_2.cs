@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Week2_Project
+namespace Homework
 {
     class Week2_201813086_2
     {

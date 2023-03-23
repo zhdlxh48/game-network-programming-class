@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Week2_Project
+namespace Homework
 {
     public class Week2_201813086_3
     {

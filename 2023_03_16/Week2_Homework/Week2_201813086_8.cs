@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Text;
 
-namespace Week2_Project
+namespace Homework
 {
     // UDP 클라이언트
     public static class Week2_201813086_8
