@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1A85BFD9-003B-4890-AE5E-F38EE04B4525}</ProjectGuid>
+    <ProjectGuid>{A9DD6B8B-D6F8-4086-A64F-4539112147A1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_2023_03_23</RootNamespace>
-    <AssemblyName>2023_03_23</AssemblyName>
+    <RootNamespace>_2023_03_30</RootNamespace>
+    <AssemblyName>2023_03_30</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,22 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Practice\TcpClientPractice.cs" />
-    <Compile Include="Practice\TcpServerPractice.cs" />
+    <Compile Include="Practice\SimpleThreadPractice.cs" />
+    <Compile Include="Practice\ThreadTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Week3_Homework\Week3_201813086_1.cs" />
-    <Compile Include="Week3_Homework\Week3_201813086_2.cs" />
-    <Compile Include="Week3_Homework\Week3_201813086_3.cs" />
-    <Compile Include="Week3_Homework\Week3_201813086_4.cs" />
-    <Compile Include="Week3_Homework\Week3_201813086_5.cs" />
-    <Compile Include="Week3_Homework\Week3_201813086_6.cs" />
-    <Compile Include="Week3_Homework\Week3_201813086_8.cs" />
-    <Compile Include="Week3_Homework\Week3_201813086_7.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Week4_Homework\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
