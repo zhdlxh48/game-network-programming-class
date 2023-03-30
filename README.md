@@ -3,8 +3,5 @@
 
 ## 변경사항
 - 2023-03-16: 소켓 생성
-
-### SocketType
-- SocketType.Stream: TCP
-- SocketType.Dgram: UDP
-- SocketType.Raw: Editable socket type
+- 2023-03-23: 간단한 TCP/UDP 서버 생성
+- 2023-03-30: Thread 실습
