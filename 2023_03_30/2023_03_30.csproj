@@ -47,12 +47,22 @@
     <Compile Include="Practice\ThreadTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Week4_Homework\Week4_201813086_1.cs" />
+    <Compile Include="Week4_Homework\Week4_201813086_10.cs" />
+    <Compile Include="Week4_Homework\Week4_201813086_2.cs" />
+    <Compile Include="Week4_Homework\Week4_201813086_3.cs" />
+    <Compile Include="Week4_Homework\Week4_201813086_4.cs" />
+    <Compile Include="Week4_Homework\Week4_201813086_5.cs" />
+    <Compile Include="Week4_Homework\Week4_201813086_6.cs" />
+    <Compile Include="Week4_Homework\Week4_201813086_7.cs" />
+    <Compile Include="Week4_Homework\Week4_201813086_8.cs" />
+    <Compile Include="Week4_Homework\Week4_201813086_9.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Week4_Homework\Week4_201813086_Study_1.md" />
+    <None Include="Week4_Homework\Week4_201813086_Study_2.md" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Week4_Homework\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
