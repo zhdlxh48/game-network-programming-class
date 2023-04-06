@@ -60,8 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Week4_Homework\Week4_201813086_Study_1.md" />
-    <None Include="Week4_Homework\Week4_201813086_Study_2.md" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
