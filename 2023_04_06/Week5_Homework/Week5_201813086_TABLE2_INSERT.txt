@@ -1,0 +1,4 @@
+insert into Items(itemName, itemType, itemDesc) VALUES('HP포션', 100, 'HP를 100 회복합니다');
+insert into Items(itemName, itemType, itemDesc) VALUES('MP포션', 100, 'MP를 100 회복합니다');
+
+insert into Items(itemName, itemType, itemDesc) VALUES('강철검', 400, '여행을 떠나는 초보자에게 주어지는 검, 투박하지만 튼튼하다');

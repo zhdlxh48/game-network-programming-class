@@ -1,0 +1,2 @@
+insert into Players(email, nickname, passwd) VALUES('zhdlxh48@gmail.com', 'MayB', 'testpasswd');
+insert into Players(email, nickname, passwd) VALUES('testemail01@gmail.com', 'testnick', 'testpasswd01');

@@ -1,0 +1,9 @@
+create table Players (
+	id integer primary key, 
+    email varchar(48) unique, 
+    nickname varchar(24) not null, 
+    passwd varchar(24) not null, 
+    check(email like '%@%')
+);
+
+alter table Players modify id integer not null auto_increment;

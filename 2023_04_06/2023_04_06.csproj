@@ -81,6 +81,8 @@
     <Compile Include="Practice\TestDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Week5_Homework\Week5_201813086_SELECT.cs" />
+    <Compile Include="Week5_Homework\Week5_201813086_UPDATE.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
