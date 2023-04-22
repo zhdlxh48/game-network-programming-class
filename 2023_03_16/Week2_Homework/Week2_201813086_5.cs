@@ -47,18 +47,22 @@ namespace Homework
                 {
                     // using을 이용해 Close Method로 명시하지 않아도 사용이 끝나면 자동으로 Dispose를 진행함
                     // TcpListener 객체에서 연결 요청이 들어오면 Blocking 상태에서 돌아와 요청을 수락 및 클라이언트 객체을 받아옴
-                    using var client = listener.AcceptTcpClient();
-                    // 연결된 클라이언트 stream을 가져옴
-                    using var stream = client.GetStream();
-
-                    Console.WriteLine("Accept tcp client request");
-                    while ((receivedBytes = stream.Read(buffer, 0, buffer.Length)) > 0)
+                    using (var client = listener.AcceptTcpClient())
                     {
-                        stream.Write(buffer, 0, receivedBytes);
-                        totalReceivedBytes += receivedBytes;
-                    }
+                        // 연결된 클라이언트 stream을 가져옴
+                        using (var stream = client.GetStream())
+                        {
 
-                    Console.WriteLine("Echoed {0} bytes", totalReceivedBytes);
+                            Console.WriteLine("Accept tcp client request");
+                            while ((receivedBytes = stream.Read(buffer, 0, buffer.Length)) > 0)
+                            {
+                                stream.Write(buffer, 0, receivedBytes);
+                                totalReceivedBytes += receivedBytes;
+                            }
+
+                            Console.WriteLine("Echoed {0} bytes", totalReceivedBytes);
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {

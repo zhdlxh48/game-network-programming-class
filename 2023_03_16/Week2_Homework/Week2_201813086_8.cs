@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
@@ -16,15 +17,18 @@ namespace Homework
 
             try
             {
-                using var client = new UdpClient();
-                client.Send(buffer, buffer.Length, host, serverPort);
+                using (var client = new UdpClient())
+                {
+                    client.Send(buffer, buffer.Length, host, serverPort);
 
-                Console.WriteLine("Sent {0} bytes to the server", buffer.Length);
+                    Console.WriteLine("Sent {0} bytes to the server", buffer.Length);
 
-                var remoteIPEndPoint = new IPEndPoint(IPAddress.Any, 0);
-                byte[] rcvPacket = client.Receive(ref remoteIPEndPoint);
+                    var remoteIPEndPoint = new IPEndPoint(IPAddress.Any, 0);
+                    byte[] rcvPacket = client.Receive(ref remoteIPEndPoint);
 
-                Console.WriteLine("Received {0} bytes from {1}: {2}", rcvPacket.Length, remoteIPEndPoint, Encoding.ASCII.GetString(rcvPacket, 0, rcvPacket.Length));
+                    Console.WriteLine("Received {0} bytes from {1}: {2}", rcvPacket.Length, remoteIPEndPoint,
+                        Encoding.ASCII.GetString(rcvPacket, 0, rcvPacket.Length));
+                }
             }
             catch (SocketException ex)
             {
