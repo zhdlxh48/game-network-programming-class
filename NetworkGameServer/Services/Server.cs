@@ -9,81 +9,137 @@ namespace NetworkGameServer.Services
 {
     public class Server
     {
-        private const int BufferSize = 1024;
-        private const int ListenMax = 1000;
-
         private readonly int _port;
         
-        private readonly Socket _udpSocket;
-        private readonly Database _db;
+        private const int BufferSize = 1024;
+        private const int ListenMax = 256;
         
-        private Thread _udpThread;
+        private readonly Database _db;
+
+        private readonly Socket _listenSocket;
+        
+        private Thread _listenThread;
+        private CancellationTokenSource _cts;
 
         public Server(int port)
         {
             _port = port;
-            
-            _udpSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
             _db = new Database("localhost", "ckgame", "root", "root");
             
-            _udpThread = new Thread(ProcessClient);
+            _listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            
+            _listenThread = new Thread(ListenTcpClient);
+            _cts = new CancellationTokenSource();
         }
 
         public void Start()
         {
-            _udpThread.IsBackground = true;
-            _udpThread.Start(_udpSocket);
+            _listenThread.IsBackground = true;
+            _listenThread.Start(_cts.Token);
         }
 
         public void Stop()
         {
-            _udpThread.Abort();
-            _udpSocket.Close();
+            _cts.Cancel();
+            
+            _listenSocket.Close();
+            _listenSocket.Dispose();
+            
+            _listenThread.Abort();
         }
 
-        private void ProcessClient(object sock)
+        private void ListenTcpClient(object token)
         {
+            var cancelToken = (CancellationToken)token;
             try
             {
-                var udpSock = sock as Socket;
+                _listenSocket.Bind(new IPEndPoint(IPAddress.Any, _port));
+                _listenSocket.Listen(ListenMax);
 
-                var rcvBuf = new byte[BufferSize];
-                EndPoint clientEp = new IPEndPoint(IPAddress.None, 0);
+                Socket clientSock = null;
+                Thread clientThread = null;
+
+                while (!cancelToken.IsCancellationRequested)
+                {
+                    try
+                    {
+                        clientSock = _listenSocket.Accept();
+
+                        var clientEP = clientSock.RemoteEndPoint as IPEndPoint;
+                        Console.WriteLine("{0}:{1} - 클라이언트 연결 허용", clientEP.Address, clientEP.Port);
+
+                        clientThread = new Thread(ProcessClient);
+                        clientThread.Start(clientSock);
+                    }
+                    catch (SocketException ex)
+                    {
+                        Console.WriteLine($"[Network Socket Error] {ex.Message}");
+                        break;
+                    }
+                    catch (ThreadStateException ex)
+                    {
+                        Console.WriteLine($"[Threading Error] {ex.Message}");
+                        break;
+                    }
+                }
+                    
+                _listenSocket.Close();
+                _listenSocket.Dispose();
+            }
+            catch (SocketException ex)
+            {
+                Console.WriteLine($"[Socket Initialize Error] {ex.Message}");
                 
-                var serverEp = new IPEndPoint(IPAddress.Any, _port);
+                Console.WriteLine(ex.ErrorCode);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
 
+                Environment.Exit(-1);
+            }
+        }
+
+        private static void ProcessClient(object sock)
+        {
+            var buf = new byte[BufferSize];
+
+            var clientSock = sock as Socket;
+            // For Logging
+            var clientEp = clientSock.RemoteEndPoint as IPEndPoint;
+
+            while (true)
+            {
                 try
                 {
-                    udpSock.Bind(serverEp);
+                    var rcvSize = clientSock.Receive(buf, BufferSize, SocketFlags.None);
+                    if (rcvSize == 0) break;
 
-                    while (true)
-                    {
-                        udpSock.ReceiveFrom(rcvBuf, ref clientEp);
+                    Console.WriteLine("{0}:{1} - {2}", clientEp.Address, clientEp.Port,
+                        Encoding.Default.GetString(buf, 0, rcvSize));
 
-                        var score = Score.FromBuffer(rcvBuf);
-                        Console.WriteLine(rcvBuf.Length);
-                        Console.WriteLine("Time: " + score.Time + ", Distance: " + score.Distance);
+                    // 네트워크를 통해 받아온 Score 객체를 역직렬화 
+                    var score = Score.FromBuffer(buf);
+                    Console.WriteLine("Time: " + score.Time + ", Distance: " + score.Distance);
 
-                        var sendBuf = Encoding.UTF8.GetBytes("success");
-                        udpSock.SendTo(sendBuf, clientEp);
-                    }
+                    // var sendBuf = Encoding.UTF8.GetBytes("success");
+                    // clientSock.Send(sendBuf, sendBuf.Length, SocketFlags.None);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    Console.WriteLine(ex.Message);
 
-                    var sendBuf = Encoding.UTF8.GetBytes("failed");
-                    udpSock.SendTo(sendBuf, clientEp);
+                    // var sendBuf = Encoding.UTF8.GetBytes("failed");
+                    // clientSock.Send(sendBuf, sendBuf.Length, SocketFlags.None);
 
-                    Stop();
+                    clientSock.Close();
+                    break;
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                
-                Stop();
-            }
+
+            Console.WriteLine("{0}:{1} - 클라이언트 종료", clientEp.Address, clientEp.Port);
+
+            clientSock.Close();
+            clientSock.Dispose();
         }
     }
 }
