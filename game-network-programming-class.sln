@@ -11,10 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2023_03_30", "2023_03_30\20
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2023_04_06", "2023_04_06\2023_04_06.csproj", "{1944DAB2-F63B-45F4-8161-62D95C59DF29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkGameServer", "NetworkGameServer\NetworkGameServer.csproj", "{69F8964C-B608-4A03-B2D0-235E293DBD9A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushCarLib", "PushCarLib\PushCarLib.csproj", "{F95AA83B-48A5-426C-8D4F-40724FF04FED}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,14 +33,6 @@ Global
 		{1944DAB2-F63B-45F4-8161-62D95C59DF29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1944DAB2-F63B-45F4-8161-62D95C59DF29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1944DAB2-F63B-45F4-8161-62D95C59DF29}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69F8964C-B608-4A03-B2D0-235E293DBD9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69F8964C-B608-4A03-B2D0-235E293DBD9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69F8964C-B608-4A03-B2D0-235E293DBD9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69F8964C-B608-4A03-B2D0-235E293DBD9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F95AA83B-48A5-426C-8D4F-40724FF04FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F95AA83B-48A5-426C-8D4F-40724FF04FED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F95AA83B-48A5-426C-8D4F-40724FF04FED}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{F95AA83B-48A5-426C-8D4F-40724FF04FED}.Debug|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
